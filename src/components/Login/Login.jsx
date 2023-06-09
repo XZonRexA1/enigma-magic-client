@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   // sing in
@@ -132,6 +133,7 @@ const Login = () => {
                     Sign up
                   </Link>
                 </p>
+                <SocialLogin></SocialLogin>
               </form>
             </div>
           </div>

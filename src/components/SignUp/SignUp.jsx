@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignUp = () => {
   // react hook form
@@ -183,6 +184,7 @@ const SignUp = () => {
                     Sign in
                   </Link>
                 </p>
+                <SocialLogin></SocialLogin>
               </form>
             </div>
           </div>
