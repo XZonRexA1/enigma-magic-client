@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
+  const { user, logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   const navOption = (
     <>
       <li>
@@ -12,9 +19,26 @@ const NavBar = () => {
       <li>
         <Link to="/classes">Classes</Link>
       </li>
-      <li>
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
+      {user ? (
+        <>
+          <li>
+            <button onClick={handleLogOut}>
+              Logout
+            </button>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -50,8 +74,16 @@ const NavBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOption}</ul>
         </div>
-        <div className="navbar-end ">
-          <></>
+        <div className="navbar-end">
+          {user && (
+            <>
+              <div className="avatar">
+                <div className="w-8 rounded-full m-2">
+                  <img title={user?.displayName} src={user?.photoURL} />
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
