@@ -1,14 +1,28 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  // password show button
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const showPassword = () => {
     setPasswordVisible(!passwordVisible);
   };
+
+  //   react hook form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data.email, data.password)
+   }
 
   return (
     <>
@@ -22,7 +36,7 @@ const Login = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)}  className="space-y-4 md:space-y-6">
                 <div>
                   <label className="label">
                     <span className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -31,12 +45,16 @@ const Login = () => {
                   </label>
                   <input
                     type="email"
+                    {...register("email", { required: true })}
                     name="email"
                     id="email"
                     className="input input-bordered"
                     placeholder="Enter your Email"
-                    required
+                  
                   />
+                  {errors.email && (
+                  <span className="text-red-600 mt-2">Email is required</span>
+                )}
                 </div>
                 <div className="relative">
                   <label className="label">
@@ -46,16 +64,19 @@ const Login = () => {
                   </label>
                   <input
                     type={passwordVisible ? "text" : "password"}
+                    {...register("password", { required: true })}
                     name="password"
                     id="password"
                     placeholder="Enter your password"
                     className="input input-bordered"
                     required
-                    
                   />
+                  {errors.password?.type === "required" && (
+                  <p className="text-red-600 mt-2">Password is required</p>
+                )}
                 </div>
                 <div>
-                  <button onClick={showPassword} className="ml-2 py-0">
+                  <button type="button" onClick={showPassword} className="ml-2 py-0">
                     {passwordVisible ? (
                       <FaEyeSlash className="text-gray-400" />
                     ) : (
@@ -64,9 +85,9 @@ const Login = () => {
                   </button>
                 </div>
 
-                <button type="submit" className="btn btn-primary">
-                  Sign in
-                </button>
+                <input type="submit" className="btn btn-primary"
+                  value="Sing In"
+                />
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <Link
