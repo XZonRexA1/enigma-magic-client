@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  // sing in
+  const { singIn } = useAuth();
   // password show button
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -15,14 +19,29 @@ const Login = () => {
   //   react hook form
   const {
     register,
-    handleSubmit,
     reset,
+    handleSubmit,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data.email, data.password)
-   }
+    console.log(data.email, data.password);
+    singIn(data.email, data.password)
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+      reset();
+      Swal.fire({
+        title: "User Logging Successful",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    })
+  };
 
   return (
     <>
@@ -36,7 +55,10 @@ const Login = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <form onSubmit={handleSubmit(onSubmit)}  className="space-y-4 md:space-y-6">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-4 md:space-y-6"
+              >
                 <div>
                   <label className="label">
                     <span className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -50,11 +72,10 @@ const Login = () => {
                     id="email"
                     className="input input-bordered"
                     placeholder="Enter your Email"
-                  
                   />
                   {errors.email && (
-                  <span className="text-red-600 mt-2">Email is required</span>
-                )}
+                    <span className="text-red-600 mt-2">Email is required</span>
+                  )}
                 </div>
                 <div className="relative">
                   <label className="label">
@@ -72,11 +93,15 @@ const Login = () => {
                     required
                   />
                   {errors.password?.type === "required" && (
-                  <p className="text-red-600 mt-2">Password is required</p>
-                )}
+                    <p className="text-red-600 mt-2">Password is required</p>
+                  )}
                 </div>
                 <div>
-                  <button type="button" onClick={showPassword} className="ml-2 py-0">
+                  <button
+                    type="button"
+                    onClick={showPassword}
+                    className="ml-2 py-0"
+                  >
                     {passwordVisible ? (
                       <FaEyeSlash className="text-gray-400" />
                     ) : (
@@ -85,7 +110,9 @@ const Login = () => {
                   </button>
                 </div>
 
-                <input type="submit" className="btn btn-primary"
+                <input
+                  type="submit"
+                  className="btn btn-primary"
                   value="Sing In"
                 />
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
