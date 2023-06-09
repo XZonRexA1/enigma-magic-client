@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -8,7 +8,11 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   // sing in
-  const { singIn } = useAuth();
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   // password show button
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -26,7 +30,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data.email, data.password);
-    singIn(data.email, data.password)
+    signIn(data.email, data.password)
     .then(result => {
       const user = result.user;
       console.log(user);
@@ -40,8 +44,12 @@ const Login = () => {
           popup: "animate__animated animate__fadeOutUp",
         },
       });
+      navigate(from, {replace: true});
     })
   };
+
+
+
 
   return (
     <>
