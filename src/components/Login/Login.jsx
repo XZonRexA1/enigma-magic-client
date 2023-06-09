@@ -1,7 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const showPassword = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <>
       <Helmet>
@@ -14,7 +22,7 @@ const Login = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form className="space-y-4 md:space-y-6">
                 <div>
                   <label className="label">
                     <span className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -26,24 +34,34 @@ const Login = () => {
                     name="email"
                     id="email"
                     className="input input-bordered"
-                    placeholder="name@company.com"
+                    placeholder="Enter your Email"
                     required
                   />
                 </div>
-                <div>
+                <div className="relative">
                   <label className="label">
                     <span className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                       Your Password
                     </span>
                   </label>
                   <input
-                    type="password"
+                    type={passwordVisible ? "text" : "password"}
                     name="password"
                     id="password"
                     placeholder="Enter your password"
                     className="input input-bordered"
                     required
+                    
                   />
+                </div>
+                <div>
+                  <button onClick={showPassword} className="ml-2 py-0">
+                    {passwordVisible ? (
+                      <FaEyeSlash className="text-gray-400" />
+                    ) : (
+                      <FaEye className="text-gray-400" />
+                    )}
+                  </button>
                 </div>
 
                 <button type="submit" className="btn btn-primary">
