@@ -30,7 +30,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="bg-black py-8">
             <img
-              src={magicianImage2}
+              src={magicianImage3}
               alt="Magician 2"
             />
             <h1 className="mt-4 text-3xl font-bold mb-2 ml-4">Unleash Your Inner Magician</h1>
@@ -45,7 +45,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="bg-black py-8">
             <img
-              src={magicianImage3}
+              src={magicianImage2}
               alt="Magician 3"
             />
             <h1 className="mt-4 text-3xl font-bold mb-2 ml-4">Enter the World of Illusion</h1>
