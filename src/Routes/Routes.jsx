@@ -5,8 +5,8 @@ import Error from "../components/Error/Error";
 import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
 import DashBoard from "../Layout/DashBoard";
-import PrivateRoute from "./PrivateRoute";
 import Classes from "../components/ClassesPage/Classes";
+import MySelectedClasses from "../components/DashBoard/MySelectedClasses/MySelectedClasses";
 
 export const router = createBrowserRouter([
   {
@@ -25,18 +25,20 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
-    
+
       {
-        path: '/classes',
-        element: <Classes></Classes>
+        path: "/classes",
+        element: <Classes></Classes>,
       },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashBoard></DashBoard>,
+    children: [
       {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <DashBoard></DashBoard>
-          </PrivateRoute>
-        ),
+        path: "mySelectedClasses",
+        element: <MySelectedClasses></MySelectedClasses>,
       },
     ],
   },

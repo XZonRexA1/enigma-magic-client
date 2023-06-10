@@ -21,7 +21,7 @@ const NavBar = () => {
       </li>
       {user && (
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard/mySelectedClasses">Dashboard</Link>
         </li>
       )}
       {user ? (
