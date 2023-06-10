@@ -80,7 +80,7 @@ const Classes = () => {
             <h2 className="card-title">{singleClass.name}</h2>
             <p>Instructor: {singleClass.instructor}</p>
             <p>Seats: {singleClass.seats}</p>
-            <p>Price: {singleClass.price}</p>
+            <p>Price: ${singleClass.price}</p>
             <div className="card-actions">
               <button
                 className="btn"
