@@ -25,8 +25,16 @@ const Classes = () => {
 
   const handleAddToMySelectedClass = (singleClass) => {
     console.log(singleClass);
-    const classItem = {classId: singleClass._id, name: singleClass.name, image: singleClass.image, seats: singleClass.seats, price: singleClass.price, instructor: singleClass.instructor, email: user.email }
     if (user && user.email) {
+      const classItem = {
+        classId: singleClass._id,
+        name: singleClass.name,
+        image: singleClass.image,
+        seats: singleClass.seats,
+        price: singleClass.price,
+        instructor: singleClass.instructor,
+        email: user.email,
+      };
       fetch(`http://localhost:5000/mySelectedClass`, {
         method: "POST",
         headers: {
