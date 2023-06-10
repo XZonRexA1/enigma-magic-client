@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Classes = () => {
   const [classes] = useClasses();
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
 
   // checking the if seats are 0 then change the bg color to red
@@ -24,9 +24,16 @@ const Classes = () => {
   };
 
   const handleAddToMySelectedClass = (singleClass) => {
-    console.log(singleClass)
-    if (user) {
-      fetch(`http://localhost:5000/mySelectedClass`)
+    console.log(singleClass);
+    const classItem = {classId: singleClass._id, name: singleClass.name, image: singleClass.image, seats: singleClass.seats, price: singleClass.price, instructor: singleClass.instructor, email: user.email }
+    if (user && user.email) {
+      fetch(`http://localhost:5000/mySelectedClass`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classItem),
+      })
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
@@ -39,20 +46,19 @@ const Classes = () => {
             });
           }
         });
-    }
-    else {
-        Swal.fire({
-            title: 'Please login to select the class',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Login Now!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate('/login', {state: {from: location}})
-            }
-          })
+    } else {
+      Swal.fire({
+        title: "Please login to select the class",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login Now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
     }
   };
 
@@ -78,7 +84,7 @@ const Classes = () => {
             <div className="card-actions">
               <button
                 className="btn"
-                onClick={()=>handleAddToMySelectedClass(singleClass)}
+                onClick={() => handleAddToMySelectedClass(singleClass)}
                 disabled={isButtonDisabled(singleClass.seats)}
               >
                 Select
