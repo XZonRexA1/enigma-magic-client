@@ -6,12 +6,14 @@ import magicianImage1 from "../../../public/images/magician1.avif";
 import magicianImage2 from "../../../public/images/magician2.avif";
 import magicianImage3 from "../../../public/images/magician3.avif";
 import "./banner.css";
+import {  Slide } from "react-awesome-reveal";
 
 const Banner = () => {
   return (
     <>
       
-      <Swiper navigation modules={[Navigation]} className="mySwiper">
+     <Slide>
+     <Swiper navigation modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
           <div className="bg-black py-8">
             <img
@@ -58,6 +60,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+     </Slide>
    
     </>
   );

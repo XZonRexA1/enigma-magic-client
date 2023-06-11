@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useClasses from "../../hooks/useClasses";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 const Classes = () => {
   const [classes] = useClasses();
@@ -74,7 +75,8 @@ const Classes = () => {
   };
 
   return (
-    <div className="w-full md:grid md:grid-cols-3 mx-4 mb-4 text-black gap-2 ">
+    <Fade delay={1e3} cascade damping={1e-1}>
+      <div className="w-full md:grid md:grid-cols-3 mx-4 mb-4 text-black gap-2 ">
       {classes.map((singleClass) => (
         <div
           key={singleClass._id}
@@ -105,6 +107,7 @@ const Classes = () => {
         </div>
       ))}
     </div>
+    </Fade>
   );
 };
 

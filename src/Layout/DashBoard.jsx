@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons/fa";
+import { FaBook, FaCalendarAlt, FaHome, FaShoppingCart, FaUsers, FaWallet } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 
@@ -29,10 +29,10 @@ const DashBoard = () => {
                 <Link to="/dashboard/adminHome"><FaHome/> Admin Home</Link>
               </li>
               <li>
-                <Link to="/dashboard/manageClasses">Manage Classes</Link>
+                <Link to="/dashboard/manageClasses"><FaBook /> Manage Classes</Link>
               </li>
               <li>
-                <Link to="/dashboard/manageUsers">Manage Users</Link>
+                <Link to="/dashboard/manageUsers"><FaUsers />Manage Users</Link>
               </li>
             </>
           ) : (
@@ -42,17 +42,17 @@ const DashBoard = () => {
               </li>
               <li>
                 <Link to="/dashboard/mySelectedClasses">
-                  My Selected Classes
+                  <FaShoppingCart/> My Selected Classes
                 </Link>
               </li>
               <li>
                 <Link to="/dashboard/myEnrolledClasses">
-                  My Enrolled Classes
+                <FaCalendarAlt />  My Enrolled Classes
                 </Link>
               </li>
               <li>
                 <Link to="/dashboard/myPaymentHistory">
-                  My Payment History
+                <FaWallet/>  My Payment History
                 </Link>
               </li>
             </>

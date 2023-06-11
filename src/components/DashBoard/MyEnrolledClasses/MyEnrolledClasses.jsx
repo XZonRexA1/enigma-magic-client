@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
 
 const MyEnrolledClasses = () => {
@@ -14,7 +15,8 @@ const MyEnrolledClasses = () => {
   const selectedEnrolledClass = classes.map((item) => item.selectedItem);
   console.log(selectedEnrolledClass);
   return (
-    <div className="w-full">
+    <Fade delay={1e3} cascade damping={1e-1}>
+      <div className="w-full">
       <Helmet>
         <title>Enigma Magic | My Enrolled Classes</title>
       </Helmet>
@@ -57,6 +59,7 @@ const MyEnrolledClasses = () => {
         </table>
       </div>
     </div>
+    </Fade>
   );
 };
 

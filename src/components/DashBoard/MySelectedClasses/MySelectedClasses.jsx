@@ -3,6 +3,7 @@ import useMySelectedClass from "../../../hooks/useMySelectedClass";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 const MySelectedClasses = () => {
   const [mySelectedClass, refetch] = useMySelectedClass();
@@ -44,69 +45,71 @@ const MySelectedClasses = () => {
   };
 
   return (
-    <div className="w-full">
-      <Helmet>
-        <title>Enigma Magic | My Selected Classes</title>
-      </Helmet>
-      <h1 className="text-4xl text-center mb-4">My Selected Classes</h1>
-      <hr className="mb-4" />
-      <div className="uppercase font-semibold flex justify-evenly items-center h-[60px]">
-        <h3 className="text-3xl">Total Classes: {mySelectedClass.length}</h3>
-        <h3 className="text-3xl mx-4">Total Price: ${total.toFixed()}</h3>
-      </div>
-      <div className="overflow-x-auto w-full">
-        <table className="table text-white w-full">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Class</th>
-              <th>Class Name</th>
-              <th>Instructor</th>
-              <th>Price</th>
-              <th>Action</th>
-              <th>Pay</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mySelectedClass.map((item, index) => (
-              <tr key={item._id}>
-                <td>{index + 1}</td>
-                <td>
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src={item.image}
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                </td>
-                <td>{item.name}</td>
-                <td>{item.instructor}</td>
-                <td className="text-end">${item.price}</td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(item)}
-                    className="btn btn-ghost  bg-red-800"
-                  >
-                    <FaTrashAlt />
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handlePay(item)}
-                    className="btn btn-warning btn-sm"
-                  >
-                    pay
-                  </button>
-                </td>
+    <Fade delay={1e3} cascade damping={1e-1}>
+      <div className="w-full">
+        <Helmet>
+          <title>Enigma Magic | My Selected Classes</title>
+        </Helmet>
+        <h1 className="text-4xl text-center mb-4">My Selected Classes</h1>
+        <hr className="mb-4" />
+        <div className="uppercase font-semibold flex justify-evenly items-center h-[60px]">
+          <h3 className="text-3xl">Total Classes: {mySelectedClass.length}</h3>
+          <h3 className="text-3xl mx-4">Total Price: ${total.toFixed()}</h3>
+        </div>
+        <div className="overflow-x-auto w-full">
+          <table className="table text-white w-full">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Class</th>
+                <th>Class Name</th>
+                <th>Instructor</th>
+                <th>Price</th>
+                <th>Action</th>
+                <th>Pay</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {mySelectedClass.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src={item.image}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.instructor}</td>
+                  <td className="text-end">${item.price}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(item)}
+                      className="btn btn-ghost  bg-red-800"
+                    >
+                      <FaTrashAlt />
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handlePay(item)}
+                      className="btn btn-warning btn-sm"
+                    >
+                      pay
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

@@ -1,6 +1,10 @@
+import { Fade } from "react-awesome-reveal";
+
+
 const AboutUs = () => {
     return (
-      <section className="bg-gray-100 py-10 w-full p-4">
+      <Fade delay={1e3} cascade damping={1e-1}>
+        <section className="bg-gray-100 py-10 w-full p-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-4">About Us</h2>
           <p className="text-gray-800 mb-6">
@@ -24,7 +28,8 @@ const AboutUs = () => {
             Learn More
           </a>
         </div>
-      </section>
+      </section> 
+      </Fade>
     );
   };
   

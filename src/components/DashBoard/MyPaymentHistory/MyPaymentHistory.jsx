@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
 
 const MyPaymentHistory = () => {
@@ -13,7 +14,8 @@ const MyPaymentHistory = () => {
   }, []);
   console.log(classes);
   return (
-    <div className="w-full">
+    <Fade delay={1e3} cascade damping={1e-1}>
+      <div className="w-full">
       <Helmet>
         <title>Enigma Magic | My Payment History</title>
       </Helmet>
@@ -58,6 +60,7 @@ const MyPaymentHistory = () => {
         </table>
       </div>
     </div>
+    </Fade>
   );
 };
 

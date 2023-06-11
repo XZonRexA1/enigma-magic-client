@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { Fade } from "react-awesome-reveal";
 
 const Login = () => {
   // sing in
@@ -54,6 +55,7 @@ const Login = () => {
 
   return (
     <>
+      <Fade>
       <Helmet>
         <title>Enigma Magic | Sign In</title>
       </Helmet>
@@ -139,6 +141,7 @@ const Login = () => {
           </div>
         </div>
       </section>
+      </Fade>
     </>
   );
 };
