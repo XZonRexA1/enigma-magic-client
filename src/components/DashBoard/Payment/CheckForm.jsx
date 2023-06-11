@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./CheckForm.css";
 import useAuth from "../../../hooks/useAuth";
 
-const CheckForm = ({  selectedClass, price }) => {
+const CheckForm = ({ selectedItem, selectedClass, price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -83,7 +83,8 @@ const CheckForm = ({  selectedClass, price }) => {
         date: new Date(),
         status: 'service pending',
         selectedClass: selectedClass.map(item=> item._id),
-        selectedClassNames: selectedClass.map(item=> item.name)
+        selectedClassNames: selectedClass.map(item=> item.name),
+        selectedItem
       };
 
       fetch("http://localhost:5000/payments", {

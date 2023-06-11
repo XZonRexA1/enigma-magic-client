@@ -8,8 +8,8 @@ const MySelectedClasses = () => {
   const [mySelectedClass, refetch] = useMySelectedClass();
   
   const navigate = useNavigate();
-  const handlePay = (price) => {
-    navigate("/dashboard/payment", { state: { selectedPrice: price } });
+  const handlePay = (item) => {
+    navigate("/dashboard/payment", { state: { selectedItem: item } });
   };
 
   console.log(mySelectedClass);
@@ -92,7 +92,7 @@ const MySelectedClasses = () => {
                 </td>
                 <td>
                   <button
-                    onClick={() => handlePay(item.price)}
+                    onClick={() => handlePay(item)}
                     className="btn btn-warning btn-sm"
                   >
                     pay

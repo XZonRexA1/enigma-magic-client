@@ -8,6 +8,7 @@ import DashBoard from "../Layout/DashBoard";
 import Classes from "../components/ClassesPage/Classes";
 import MySelectedClasses from "../components/DashBoard/MySelectedClasses/MySelectedClasses";
 import Payment from "../components/DashBoard/Payment/Payment";
+import MyEnrolledClasses from "../components/DashBoard/MyEnrolledClasses/MyEnrolledClasses";
 
 export const router = createBrowserRouter([
   {
@@ -42,9 +43,13 @@ export const router = createBrowserRouter([
         element: <MySelectedClasses></MySelectedClasses>,
       },
       {
-        path: 'payment',
-        element: <Payment></Payment>
-      }
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "myEnrolledClasses",
+        element: <MyEnrolledClasses></MyEnrolledClasses>,
+      },
     ],
   },
   {
