@@ -2,21 +2,20 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const MyEnrolledClasses = () => {
-    const [classes, setClasses] = useState([]);
+  const [classes, setClasses] = useState([]);
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/payments')
-        .then(res=>res.json())
-        .then(data=>{
-            setClasses(data);
-          
-        })
-    },[])
-    const selectedEnrolledClass = classes.map(item => item.selectedItem)
-    console.log(selectedEnrolledClass)
-    return (
-        <div className="w-full">
-             <Helmet>
+  useEffect(() => {
+    fetch("https://enigma-magic-server-xzonrexa1.vercel.app/payments")
+      .then((res) => res.json())
+      .then((data) => {
+        setClasses(data);
+      });
+  }, []);
+  const selectedEnrolledClass = classes.map((item) => item.selectedItem);
+  console.log(selectedEnrolledClass);
+  return (
+    <div className="w-full">
+      <Helmet>
         <title>Enigma Magic | My Enrolled Classes</title>
       </Helmet>
       <h1 className="text-5xl text-center  mb-4">My Enrolled Classes</h1>
@@ -52,14 +51,13 @@ const MyEnrolledClasses = () => {
                 <td>{item.email}</td>
                 <td>{item.instructor}</td>
                 <td className="text-end">${item.price}</td>
-                
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default MyEnrolledClasses;

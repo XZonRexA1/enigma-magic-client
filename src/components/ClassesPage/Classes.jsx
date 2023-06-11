@@ -35,13 +35,16 @@ const Classes = () => {
         instructor: singleClass.instructor,
         email: user.email,
       };
-      fetch(`http://localhost:5000/mySelectedClass`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(classItem),
-      })
+      fetch(
+        `https://enigma-magic-server-xzonrexa1.vercel.app/mySelectedClass`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(classItem),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {

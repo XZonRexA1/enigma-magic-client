@@ -45,14 +45,13 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-    // Update user
-    const updateUserProfile = (name, photo) => {
-      return updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: photo,
-      });
-    };
-
+  // Update user
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
 
   // on Auth State change
   useEffect(() => {
@@ -60,21 +59,20 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       // console.log("current User", currentUser);
 
-
       // get and set token
-      if(currentUser){
-        axios.post('http://localhost:5000/jwt', {email: currentUser.email})
-        .then(data =>{
+      if (currentUser) {
+        axios
+          .post("https://enigma-magic-server-xzonrexa1.vercel.app/jwt", {
+            email: currentUser.email,
+          })
+          .then((data) => {
             // console.log(data.data.token)
-            localStorage.setItem('access-token', data.data.token)
+            localStorage.setItem("access-token", data.data.token);
             setLoading(false);
-        })
-    }
-    else{
-        localStorage.removeItem('access-token')
-    }
-
-      
+          });
+      } else {
+        localStorage.removeItem("access-token");
+      }
     });
     return () => {
       return unsubscribe();
@@ -88,7 +86,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     googleSingIn,
     logOut,
-    updateUserProfile
+    updateUserProfile,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

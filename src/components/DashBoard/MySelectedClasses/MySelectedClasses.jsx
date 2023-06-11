@@ -2,11 +2,11 @@ import { Helmet } from "react-helmet-async";
 import useMySelectedClass from "../../../hooks/useMySelectedClass";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MySelectedClasses = () => {
   const [mySelectedClass, refetch] = useMySelectedClass();
-  
+
   const navigate = useNavigate();
   const handlePay = (item) => {
     navigate("/dashboard/payment", { state: { selectedItem: item } });
@@ -26,9 +26,12 @@ const MySelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/mySelectedClass/${item._id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://enigma-magic-server-xzonrexa1.vercel.app/mySelectedClass/${item._id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

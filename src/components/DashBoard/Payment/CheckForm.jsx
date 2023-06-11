@@ -13,13 +13,16 @@ const CheckForm = ({ selectedItem, selectedClass, price }) => {
   const [transactionId, setTransactionId] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://enigma-magic-server-xzonrexa1.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data.clientSecret);
@@ -74,32 +77,31 @@ const CheckForm = ({ selectedItem, selectedClass, price }) => {
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
 
-        
       const payment = {
         name: user?.displayName,
         email: user?.email,
         transactionId: paymentIntent.id,
         price,
         date: new Date(),
-        status: 'service pending',
-        selectedClass: selectedClass.map(item=> item._id),
-        selectedClassNames: selectedClass.map(item=> item.name),
-        selectedItem
+        status: "service pending",
+        selectedClass: selectedClass.map((item) => item._id),
+        selectedClassNames: selectedClass.map((item) => item.name),
+        selectedItem,
       };
 
-      fetch("http://localhost:5000/payments", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(payment),
-    })
-    .then(res=>res.json())
-    .then(data => { 
-        if(data.insertedId) {
-            // 
-        }
-    })
+      fetch("https://enigma-magic-server-xzonrexa1.vercel.app/payments", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            //
+          }
+        });
     }
   };
 

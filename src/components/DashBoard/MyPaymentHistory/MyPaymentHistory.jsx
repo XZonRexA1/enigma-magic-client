@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const MyPaymentHistory = () => {
-    const [classes, setClasses] = useState([]);
+  const [classes, setClasses] = useState([]);
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/payments')
-        .then(res=>res.json())
-        .then(data=>{
-            setClasses(data);
-          
-        })
-    },[])
-    console.log(classes)
+  useEffect(() => {
+    fetch("https://enigma-magic-server-xzonrexa1.vercel.app/payments")
+      .then((res) => res.json())
+      .then((data) => {
+        setClasses(data);
+      });
+  }, []);
+  console.log(classes);
   return (
     <div className="w-full">
       <Helmet>

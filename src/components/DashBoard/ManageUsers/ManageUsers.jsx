@@ -5,18 +5,20 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-    const [axiosSecure] = useAxiosSecure();
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     return res.data;
   });
 
-
-  // make admin 
+  // make admin
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://enigma-magic-server-xzonrexa1.vercel.app/users/admin/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -33,11 +35,14 @@ const ManageUsers = () => {
       });
   };
 
-  // make instructor 
+  // make instructor
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://enigma-magic-server-xzonrexa1.vercel.app/users/instructor/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -96,7 +101,10 @@ const ManageUsers = () => {
                   {user.role === "instructor" ? (
                     "instructor"
                   ) : (
-                    <button  onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-green-600  text-white">
+                    <button
+                      onClick={() => handleMakeInstructor(user)}
+                      className="btn btn-ghost bg-green-600  text-white"
+                    >
                       <FaUserShield></FaUserShield>
                     </button>
                   )}
