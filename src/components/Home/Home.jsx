@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
+import AboutUs from "../AboutUs/AboutUs";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
         <title>Enigma Magic | Home</title>
       </Helmet>
       <Banner></Banner>
+      <AboutUs></AboutUs>
     </div>
   );
 };
