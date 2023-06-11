@@ -41,7 +41,6 @@ const MySelectedClasses = () => {
       <div className="uppercase font-semibold flex justify-evenly items-center h-[60px]">
         <h3 className="text-3xl">Total Classes: {mySelectedClass.length}</h3>
         <h3 className="text-3xl mx-4">Total Price: ${total.toFixed()}</h3>
-        <button className="btn btn-warning btn-sm">pay</button>
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table text-white w-full">
@@ -51,8 +50,10 @@ const MySelectedClasses = () => {
               <th>#</th>
               <th>Class</th>
               <th>Class Name</th>
+              <th>Instructor</th>
               <th>Price</th>
               <th>Action</th>
+              <th>Pay</th>
             </tr>
           </thead>
           <tbody>
@@ -70,6 +71,7 @@ const MySelectedClasses = () => {
                   </div>
                 </td>
                 <td>{item.name}</td>
+                <td>{item.instructor}</td>
                 <td className="text-end">${item.price}</td>
                 <td>
                   <button
@@ -78,6 +80,9 @@ const MySelectedClasses = () => {
                   >
                     <FaTrashAlt />
                   </button>
+                </td>
+                <td>
+                  <button className="btn btn-warning btn-sm">pay</button>
                 </td>
               </tr>
             ))}
