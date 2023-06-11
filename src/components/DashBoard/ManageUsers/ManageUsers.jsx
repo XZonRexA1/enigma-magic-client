@@ -9,6 +9,8 @@ const ManageUsers = () => {
     return res.json();
   });
 
+
+  // make admin 
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
       method: "PATCH",
@@ -22,6 +24,27 @@ const ManageUsers = () => {
             position: "top-end",
             icon: "success",
             title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  // make instructor 
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Instructor Now!`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -71,7 +94,7 @@ const ManageUsers = () => {
                   {user.role === "instructor" ? (
                     "instructor"
                   ) : (
-                    <button className="btn btn-ghost bg-green-600  text-white">
+                    <button  onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-green-600  text-white">
                       <FaUserShield></FaUserShield>
                     </button>
                   )}
