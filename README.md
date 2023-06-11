@@ -14,14 +14,25 @@
 
 ## Used packages/ technology name
 
+## Client side Technology
 * Tanstack query.
 * Axios.
 * Tailwindcss.
 * Daisy UI.
 * Firebase.
-* JWT
-* Vercel
-* react awesome components and many more
+* Strip js.
+* JWT.
+* Framer-motion
+* react awesome components and many more etc.
+## Server side Technology
+* Node JS.
+* Express js.
+* Stripe js.
+* Vercel.
+* mongodb.
+* dotenv.
+* express.
+
 
 # My Project Website Host link
 [Link](https://enigma-magic.web.app/)
