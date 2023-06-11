@@ -1,13 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useMySelectedClass = () => {
-const {user} = useAuth()
+const {user, loading} = useAuth()
+const [axiosSecure] = useAxiosSecure()
     const {refetch, data: mySelectedClass = [] } = useQuery({
         queryKey: ['mySelectedClass', user?.email],
+        enabled: !loading,
         queryFn: async ()=>{
-            const res = await fetch(`http://localhost:5000/mySelectedClass?email=${user.email}`)
+            const res = await axiosSecure(`/mySelectedClass?email=${user?.email}`)
             return res.json();
         }
     })
