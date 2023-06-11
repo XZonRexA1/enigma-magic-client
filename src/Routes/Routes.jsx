@@ -11,6 +11,7 @@ import Payment from "../components/DashBoard/Payment/Payment";
 import MyEnrolledClasses from "../components/DashBoard/MyEnrolledClasses/MyEnrolledClasses";
 import MyPaymentHistory from "../components/DashBoard/MyPaymentHistory/MyPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
+import ManageUsers from "../components/DashBoard/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "myPaymentHistory",
         element: <MyPaymentHistory></MyPaymentHistory>
+      },
+      {
+        path: 'manageUsers',
+        element: <ManageUsers></ManageUsers>
       }
     ],
   },

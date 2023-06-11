@@ -2,7 +2,7 @@ import { FaHome } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 
 const DashBoard = () => {
-  const isInstructor = false;
+  const isAdmin = true;
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -20,14 +20,17 @@ const DashBoard = () => {
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
 
-          {isInstructor ? (
+          {isAdmin ? (
             <>
             
               <li>
-                <Link to="/dashboard/addAClass">Add a Class</Link>
+                <Link to="/dashboard/home"><FaHome/> Admin Home</Link>
               </li>
               <li>
-                <Link to="/dashboard/myClasses">My Classes</Link>
+                <Link to="/dashboard/manageClasses">Manage Classes</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/manageUsers">Manage Users</Link>
               </li>
             </>
           ) : (

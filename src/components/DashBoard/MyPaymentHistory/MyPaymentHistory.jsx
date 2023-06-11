@@ -29,10 +29,9 @@ const MyPaymentHistory = () => {
               <th>Class</th>
               <th>Class Name</th>
               <th>Email</th>
-              <th>My Name</th>
               <th>Instructor</th>
-              <th>Date</th>
-              <th>Price</th>
+              <th>Total Price</th>
+              <th>Payment Date</th>
             </tr>
           </thead>
           <tbody>
@@ -51,10 +50,9 @@ const MyPaymentHistory = () => {
                 </td>
                 <td>{item.selectedItem.name}</td>
                 <td>{item.email}</td>
-                <td>{item.name}</td>
                 <td>{item.selectedItem.instructor}</td>
+                <td className="text-end">${item.price}</td>
                 <td>{new Date(item.date).toLocaleDateString()}</td>
-                <td>{item.price}</td>
               </tr>
             ))}
           </tbody>
