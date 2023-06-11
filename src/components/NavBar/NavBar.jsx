@@ -12,9 +12,9 @@ const NavBar = () => {
 
   const handleToggle = (e) => {
     if (e.target.checked) {
-      setTheme("dark");
-    } else {
       setTheme("light");
+    } else {
+      setTheme("dark");
     }
   };
 
@@ -104,13 +104,13 @@ const NavBar = () => {
             </>
           )}
           <div>
-            <label className={`swap swap-rotate ${theme === 'light' ? 'text-white' : 'text-black'}`}>
+            <label className={`swap swap-rotate ${theme === 'light' ? 'text-black' : 'text-white'}`}>
               {/* this hidden checkbox controls the state */}
               <input
                 type="checkbox"
                 onChange={handleToggle}
                 style={{ display: "none" }}
-                checked={theme === 'light' ? false : true}
+                checked={theme === 'dark' ? false : true}
               />
 
               {/* sun icon */}
