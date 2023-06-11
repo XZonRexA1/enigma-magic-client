@@ -16,24 +16,38 @@ const SignUp = () => {
   } = useForm();
 
   // creating user
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   // navigation
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data.email, data.password);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      reset();
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "User created Successfully.",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navigate("/");
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          const saveUser = {name: data.name, email: data.email}
+          fetch(`http://localhost:5000/users`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(saveUser)
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User created Successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
+        })
+        .catch((error) => console.log(error));
     });
   };
   const password = watch("password", "");

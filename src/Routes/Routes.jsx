@@ -10,6 +10,7 @@ import MySelectedClasses from "../components/DashBoard/MySelectedClasses/MySelec
 import Payment from "../components/DashBoard/Payment/Payment";
 import MyEnrolledClasses from "../components/DashBoard/MyEnrolledClasses/MyEnrolledClasses";
 import MyPaymentHistory from "../components/DashBoard/MyPaymentHistory/MyPaymentHistory";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashBoard></DashBoard>,
+    element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
     children: [
       {
         path: "mySelectedClasses",
