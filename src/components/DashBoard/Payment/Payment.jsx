@@ -1,17 +1,23 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckForm from "./CheckForm";
+import { useLocation } from "react-router-dom";
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const Payment = () => {
+    
+ 
+    const location = useLocation();
+    const price = location.state?.selectedPrice || null;
+    
   return (
     <div className="w-full">
-      <h1 className="text-5xl text-center mb-4">Payment</h1>
+      <h1 className="text-5xl text-center text-black mb-4">Payment</h1>
       <hr className="mb-4" />
       <Elements stripe={stripePromise}>
-        <CheckForm></CheckForm>
+        <CheckForm price={price}></CheckForm>
       </Elements>
     </div>
   );

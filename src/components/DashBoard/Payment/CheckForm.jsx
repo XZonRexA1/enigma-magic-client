@@ -3,7 +3,7 @@ import { useState } from "react";
 import './CheckForm.css'
 
 
-const CheckForm = () => {
+const CheckForm = ({price}) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
