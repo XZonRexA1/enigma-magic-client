@@ -11,7 +11,7 @@ const [axiosSecure] = useAxiosSecure()
         enabled: !loading,
         queryFn: async ()=>{
             const res = await axiosSecure(`/mySelectedClass?email=${user?.email}`)
-            return res.json();
+            return res.data;
         }
     })
     return [mySelectedClass, refetch]

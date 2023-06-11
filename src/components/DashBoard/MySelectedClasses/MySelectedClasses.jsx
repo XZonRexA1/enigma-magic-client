@@ -12,7 +12,7 @@ const MySelectedClasses = () => {
     navigate("/dashboard/payment", { state: { selectedItem: item } });
   };
 
-  console.log(mySelectedClass);
+  // console.log(mySelectedClass);
   const total = mySelectedClass.reduce((sum, item) => item.price + sum, 0);
 
   const handleDelete = (item) => {

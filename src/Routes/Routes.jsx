@@ -12,6 +12,9 @@ import MyEnrolledClasses from "../components/DashBoard/MyEnrolledClasses/MyEnrol
 import MyPaymentHistory from "../components/DashBoard/MyPaymentHistory/MyPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
 import ManageUsers from "../components/DashBoard/ManageUsers/ManageUsers";
+import AdminHome from "../components/DashBoard/AdminHome/AdminHome";
+import AdminRoute from "./AdminRoute";
+import StudentHome from "../components/DashBoard/StudentHome/StudentHome";
 
 export const router = createBrowserRouter([
   {
@@ -59,8 +62,17 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manageUsers',
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+      },
+      {
+        path: 'adminHome',
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+      },
+      {
+        path: 'studentHome',
+        element: <StudentHome></StudentHome>
       }
+      
     ],
   },
   {

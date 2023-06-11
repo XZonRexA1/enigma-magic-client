@@ -12,7 +12,7 @@ const SocialLogin = () => {
   const handelGoogleSignIn = () => {
     googleSingIn().then((result) => {
       const loggedInUser = result.user;
-      console.log(loggedInUser);
+      // console.log(loggedInUser);
       const saveUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,

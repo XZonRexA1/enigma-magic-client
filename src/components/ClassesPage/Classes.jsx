@@ -24,7 +24,7 @@ const Classes = () => {
   };
 
   const handleAddToMySelectedClass = (singleClass) => {
-    console.log(singleClass);
+    // console.log(singleClass);
     if (user && user.email) {
       const classItem = {
         classId: singleClass._id,
