@@ -1,3 +1,4 @@
+import { FaHome } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 
 const DashBoard = () => {
@@ -21,6 +22,7 @@ const DashBoard = () => {
 
           {isInstructor ? (
             <>
+            
               <li>
                 <Link to="/dashboard/addAClass">Add a Class</Link>
               </li>
@@ -30,6 +32,9 @@ const DashBoard = () => {
             </>
           ) : (
             <>
+              <li>
+                <Link to="/dashboard/mySelectedClasses"><FaHome></FaHome> Student Home</Link>
+              </li>
               <li>
                 <Link to="/dashboard/mySelectedClasses">
                   My Selected Classes

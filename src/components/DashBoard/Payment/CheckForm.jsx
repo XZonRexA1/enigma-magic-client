@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./CheckForm.css";
 import useAuth from "../../../hooks/useAuth";
 
-const CheckForm = ({ price }) => {
+const CheckForm = ({  selectedClass, price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -73,6 +73,32 @@ const CheckForm = ({ price }) => {
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
+
+        
+      const payment = {
+        name: user?.displayName,
+        email: user?.email,
+        transactionId: paymentIntent.id,
+        price,
+        date: new Date(),
+        status: 'service pending',
+        selectedClass: selectedClass.map(item=> item._id),
+        selectedClassNames: selectedClass.map(item=> item.name)
+      };
+
+      fetch("http://localhost:5000/payments", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(payment),
+    })
+    .then(res=>res.json())
+    .then(data => { 
+        if(data.insertedId) {
+            // 
+        }
+    })
     }
   };
 

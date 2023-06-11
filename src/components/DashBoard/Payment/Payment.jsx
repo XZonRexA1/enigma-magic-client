@@ -3,13 +3,14 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckForm from "./CheckForm";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import useMySelectedClass from "../../../hooks/useMySelectedClass";
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const Payment = () => {
     
- 
+ const [selectedClass] = useMySelectedClass() 
     const location = useLocation();
     const price = location.state?.selectedPrice || null;
     
@@ -21,7 +22,7 @@ const Payment = () => {
       <h1 className="text-5xl text-center text-black mb-4">Payment</h1>
       <hr className="mb-4" />
       <Elements stripe={stripePromise}>
-        <CheckForm price={price}></CheckForm>
+        <CheckForm selectedClass={selectedClass} price={price}></CheckForm>
       </Elements>
     </div>
   );
