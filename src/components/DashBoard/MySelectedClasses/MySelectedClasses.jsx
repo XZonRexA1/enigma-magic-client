@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useMySelectedClass from "../../../hooks/useMySelectedClass";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MySelectedClasses = () => {
   const [mySelectedClass, refetch] = useMySelectedClass();
@@ -38,6 +39,8 @@ const MySelectedClasses = () => {
       <Helmet>
         <title>Enigma Magic | My Selected Classes</title>
       </Helmet>
+      <h1 className="text-4xl text-center mb-4">My Selected Classes</h1>
+      <hr className="mb-4"/>
       <div className="uppercase font-semibold flex justify-evenly items-center h-[60px]">
         <h3 className="text-3xl">Total Classes: {mySelectedClass.length}</h3>
         <h3 className="text-3xl mx-4">Total Price: ${total.toFixed()}</h3>
@@ -82,7 +85,9 @@ const MySelectedClasses = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-warning btn-sm">pay</button>
+                  <Link to="/dashboard/payment">
+                    <button className="btn btn-warning btn-sm">pay</button>
+                  </Link>
                 </td>
               </tr>
             ))}

@@ -7,6 +7,7 @@ import SignUp from "../components/SignUp/SignUp";
 import DashBoard from "../Layout/DashBoard";
 import Classes from "../components/ClassesPage/Classes";
 import MySelectedClasses from "../components/DashBoard/MySelectedClasses/MySelectedClasses";
+import Payment from "../components/DashBoard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
         path: "mySelectedClasses",
         element: <MySelectedClasses></MySelectedClasses>,
       },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
+      }
     ],
   },
   {
