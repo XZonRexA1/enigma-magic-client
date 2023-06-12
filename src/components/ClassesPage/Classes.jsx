@@ -77,36 +77,36 @@ const Classes = () => {
   return (
     <Fade delay={1e3} cascade damping={1e-1}>
       <div className="w-full md:grid md:grid-cols-3 mx-4 mb-4 text-black gap-2 ">
-      {classes.map((singleClass) => (
-        <div
-          key={singleClass._id}
-          className={`card w-96 ${getClassCardColor(singleClass.seats)}`}
-        >
-          <figure className="px-10 pt-10">
-            <img
-              src={singleClass.image}
-              alt="image of magical classes"
-              className="rounded-xl h-96 w-96"
-            />
-          </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">{singleClass.name}</h2>
-            <p>Instructor: {singleClass.instructor}</p>
-            <p>Seats: {singleClass.seats}</p>
-            <p>Price: ${singleClass.price}</p>
-            <div className="card-actions">
-              <button
-                className="btn"
-                onClick={() => handleAddToMySelectedClass(singleClass)}
-                disabled={isButtonDisabled(singleClass.seats)}
-              >
-                Select
-              </button>
+        {classes.map((singleClass) => (
+          <div
+            key={singleClass._id}
+            className={`card w-96 ${getClassCardColor(singleClass.seats)}`}
+          >
+            <figure className="px-10 pt-10">
+              <img
+                src={singleClass.image}
+                alt="image of magical classes"
+                className="rounded-xl h-96 w-96"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{singleClass.name}</h2>
+              <p>Instructor: {singleClass.instructor}</p>
+              <p>Seats: {singleClass.seats}</p>
+              <p>Price: ${singleClass.price}</p>
+              <div className="card-actions">
+                <button
+                  className="btn"
+                  onClick={() => handleAddToMySelectedClass(singleClass)}
+                  disabled={isButtonDisabled(singleClass.seats)}
+                >
+                  Select
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
     </Fade>
   );
 };
