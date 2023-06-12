@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useClasses from "../../hooks/useClasses";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const Classes = () => {
   const [classes] = useClasses();
@@ -76,6 +77,11 @@ const Classes = () => {
 
   return (
     <Fade delay={1e3} cascade damping={1e-1}>
+      <Helmet>
+        <title>Enigma Magic | Classes</title>
+      </Helmet>
+      <h1 className="text-5xl text-center  pt-24">Classes</h1>
+      <hr className="mb-4 mt-4" />
       <div className="w-full md:grid md:grid-cols-3 mx-4 mb-4 text-black gap-2 ">
         {classes.map((singleClass) => (
           <div

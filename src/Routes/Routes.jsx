@@ -15,6 +15,7 @@ import ManageUsers from "../components/DashBoard/ManageUsers/ManageUsers";
 import AdminHome from "../components/DashBoard/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
 import StudentHome from "../components/DashBoard/StudentHome/StudentHome";
+import Instructors from "../components/Instructors/Instructors";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         path: "/classes",
         element: <Classes></Classes>,
       },
+      {
+        path: "/instructors",
+        element: <Instructors></Instructors>
+      }
     ],
   },
   {
