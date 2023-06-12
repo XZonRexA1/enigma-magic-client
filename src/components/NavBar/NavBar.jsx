@@ -88,7 +88,7 @@ const NavBar = () => {
               {navOption}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Enigma magic</a>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">Enigma magic</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOption}</ul>
