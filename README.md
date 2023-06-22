@@ -20,7 +20,7 @@
 * Tailwindcss.
 * Daisy UI.
 * Firebase.
-* Strip js.
+* Stripe js.
 * JWT.
 * Framer-motion
 * react awesome components and many more etc.
