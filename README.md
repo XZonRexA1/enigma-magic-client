@@ -31,7 +31,6 @@
 * Vercel.
 * mongodb.
 * dotenv.
-* express.
 
 
 # My Project Website Host link
