@@ -6,7 +6,7 @@
 
 * My Home page is Responsive.
 
-* It is payment feature to pay the classes you selected.
+* It has a payment feature to pay the classes you selected.
 
 * Here I use Jwt for secure Login and register
 
